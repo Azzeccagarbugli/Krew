@@ -68,15 +68,16 @@ bot.action(/(.+)/, (ctx, next) => {
       )
       break;
     case 'Positive':
-      ctx.answerCbQuery('Your kind of blood is: ' + blood_type +'Rh. Positive').then(() => next())
+      ctx.answerCbQuery('Your kind of blood is: ' + blood_type[ctx.chat.id] + 'Rh. Positive').then(() => next())
       break;
     case 'Negative':
-      ctx.answerCbQuery('Your kind of blood is: ' + blood_type +'Rh. Negative').then(() => next())
+      ctx.answerCbQuery('Your kind of blood is: ' + blood_type[ctx.chat.id] + 'Rh. Negative').then(() => next())
       break;
     default:
       ctx.answerCbQuery('I can not set your kind of blood').then(() => next())
       break;
   }
+  return "22"
 })
 
 // bloodDonor(blood_type, function (err, data) {
