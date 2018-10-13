@@ -1,0 +1,22 @@
+{
+  "name": "krew",
+  "version": "1.0.0",
+  "description": "A Telegram Bot that allows you to know important information about your type of blood",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "keywords": [
+    "blood",
+    "bot",
+    "telegram",
+    "telegraf",
+    "health"
+  ],
+  "author": "Franecsco Coppola",
+  "license": "ISC",
+  "dependencies": {
+    "blood-donor": "^1.1.0",
+    "telegraf-inline-menu": "^3.2.1"
+  }
+}
