@@ -4,6 +4,8 @@ const Markup = require('telegraf/markup')
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
+const positive_negative = "_Insert the value of the positivity or negativity_"
+
 var bloodDonor = require('blood-donor')
 var settings = require("./settings")
 var blood_type = []
@@ -25,7 +27,6 @@ bot.command('blood', (ctx) => {
 })
 
 bot.action(/(.+)/, (ctx, next) => {
-  var positive_negative = "_Insert the value of the positivity or negativity_"
   let match = ctx.match[0];
 
   switch (match) {
