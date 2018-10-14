@@ -64,7 +64,7 @@ bot.action(/(\+|\-)/, (ctx, next) => {
     return appoggino
   }
 
-  ctx.replyWithMarkdown("*Information "+user_var.blood_type[ctx.chat.id]+" "+user_var.rh_value[ctx.chat.id]+"\n\n"+
+  ctx.replyWithMarkdown("*Information "+user_var.blood_type[ctx.chat.id]+user_var.rh_value[ctx.chat.id]+"\n\n"+
                          "Ideal donator*: "+user_var.blood_donor[ctx.chat.id].ideal+"\n"+
                          format_list("*Donors*: ", user_var.blood_donor[ctx.chat.id].donors)+
                          format_list("*Critical Donors*: ", user_var.blood_donor[ctx.chat.id].criticalDonors)+"\n_"+
