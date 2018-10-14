@@ -19,7 +19,7 @@ bot.command('help', (ctx) => ctx.replyWithMarkdown(settings.help_msg))
 bot.command('blood', (ctx) => {
   return ctx.replyWithMarkdown('_Insert your kind of blood_',
     Markup.inlineKeyboard([
-      Markup.callbackButton('0', 'O'),
+      Markup.callbackButton('O', 'O'),
       Markup.callbackButton('A', 'A'),
       Markup.callbackButton('B', 'B'),
       Markup.callbackButton('AB', 'AB')
