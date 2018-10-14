@@ -28,7 +28,7 @@ bot.command('blood', (ctx) => {
 })
 
 // Managing inline query
-bot.action(/([O|A|B|AB])/, (ctx, next) => {
+bot.action(/(O|AB|A|B)/, (ctx, next) => {
   user_var.blood_type[ctx.chat.id] = ctx.match[0]
   ctx.answerCbQuery(`Your kind of blood is set on: ${ctx.match[0]}`).then(() => next())
   ctx.editMessageText(settings.positive_negative,
@@ -43,9 +43,32 @@ bot.action(/(\+|\-)/, (ctx, next) => {
   user_var.rh_value[ctx.chat.id] = ctx.match[0]
   ctx.answerCbQuery(`Your kind of blood is: ${user_var.blood_type[ctx.chat.id]} Rh. ${ctx.match[0]}`).then(() => next())
   bloodDonor(`${user_var.blood_type[ctx.chat.id]}${user_var.rh_value[ctx.chat.id]}ve`, function (err, data) {
-    user_var.blood_donor = data
+    user_var.blood_donor[ctx.chat.id] = data
     console.log(data)
   })
+
+  function format_list (text, list) {
+    var appoggino = ""
+    for (var i = 0; i < list.length; i++) {
+      if (i==0) {
+        appoggino += text
+      }
+      appoggino += list[i]
+      if (i != (list.length - 1)) {
+        appoggino += ", "
+      }
+      else {
+        appoggino += "\n"
+      }
+    }
+    return appoggino
+  }
+
+  ctx.replyWithMarkdown("*Information "+user_var.blood_type[ctx.chat.id]+" "+user_var.rh_value[ctx.chat.id]+"\n\n"+
+                         "Ideal donator*: "+user_var.blood_donor[ctx.chat.id].ideal+"\n"+
+                         format_list("*Donors*: ", user_var.blood_donor[ctx.chat.id].donors)+
+                         format_list("*Critical Donors*: ", user_var.blood_donor[ctx.chat.id].criticalDonors)+"\n_"+
+                         settings.blood_group[user_var.blood_type[ctx.chat.id]]+"_")
 })
 
 bot.catch((err) => {
