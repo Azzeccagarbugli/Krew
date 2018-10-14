@@ -26,41 +26,15 @@ bot.command('blood', (ctx) => {
 
 bot.action(/(.+)/, (ctx, next) => {
   var positive_negative = "_Insert the value of the positivity or negativity_"
+  let match = ctx.match[0];
 
-  switch (ctx.match[0]) {
+  switch (match) {
     case '0':
-      blood_type[ctx.chat.id] = ctx.match[0]
-      ctx.answerCbQuery('Your kind of blood is set on: 0').then(() => next())
-      ctx.editMessageText(positive_negative,
-        Markup.inlineKeyboard([
-          Markup.callbackButton('Positive', 'Positive'),
-          Markup.callbackButton('Negative', 'Negative'),
-        ]).extra()
-      )
-      break;
     case 'A':
-      blood_type[ctx.chat.id] = ctx.match[0]
-      ctx.answerCbQuery('Your kind of blood is set on: A').then(() => next())
-      ctx.editMessageText(positive_negative,
-        Markup.inlineKeyboard([
-          Markup.callbackButton('Positive', 'Positive'),
-          Markup.callbackButton('Negative', 'Negative'),
-        ]).extra()
-      )
-      break;
     case 'B':
-      blood_type[ctx.chat.id] = ctx.match[0]
-      ctx.answerCbQuery('Your kind of blood is set on: B').then(() => next())
-      ctx.editMessageText(positive_negative,
-        Markup.inlineKeyboard([
-          Markup.callbackButton('Positive', 'Positive'),
-          Markup.callbackButton('Negative', 'Negative'),
-        ]).extra()
-      )
-      break;
     case 'AB':
-      blood_type[ctx.chat.id] = ctx.match[0]
-      ctx.answerCbQuery('Your kind of blood is set on: AB').then(() => next())
+      blood_type[ctx.chat.id] = match
+      ctx.answerCbQuery(`Your kind of blood is set on: ${match}`).then(() => next())
       ctx.editMessageText(positive_negative,
         Markup.inlineKeyboard([
           Markup.callbackButton('Positive', 'Positive'),
@@ -69,10 +43,8 @@ bot.action(/(.+)/, (ctx, next) => {
       )
       break;
     case 'Positive':
-      ctx.answerCbQuery('Your kind of blood is: ' + blood_type[ctx.chat.id] + 'Rh. Positive').then(() => next())
-      break;
     case 'Negative':
-      ctx.answerCbQuery('Your kind of blood is: ' + blood_type[ctx.chat.id] + 'Rh. Negative').then(() => next())
+      ctx.answerCbQuery(`Your kind of blood is: ${blood_type[ctx.chat.id]} Rh. ${match}`).then(() => next())
       break;
     default:
       ctx.answerCbQuery('I can not set your kind of blood').then(() => next())
