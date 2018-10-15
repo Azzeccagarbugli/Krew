@@ -48,19 +48,9 @@ bot.action(/(\+|\-)/, (ctx, next) => {
   })
 
   function format_list (text, list) {
-    var appoggino = ""
-    for (var i = 0; i < list.length; i++) {
-      if (i==0) {
-        appoggino += text
-      }
-      appoggino += list[i]
-      if (i != (list.length - 1)) {
-        appoggino += ", "
-      }
-      else {
-        appoggino += "\n"
-      }
-    }
+    let appoggino = text; // Crea stringa di base, partendo da text
+    appoggino += list.join(","); // Combina tutti gli elementi della lista separati da virgola
+    appoggino += "\n"; // Aggiungi a capo finale
     return appoggino
   }
 
