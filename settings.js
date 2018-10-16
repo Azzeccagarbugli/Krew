@@ -1,9 +1,9 @@
-var start_msg = "*Welcome in Krew!*\n\nWith this Bot you will be able to understand "+
+module.exports.start_msg = "*Welcome in Krew!*\n\nWith this Bot you will be able to understand "+
                 "more information about your blood through the command /blood"
-var help_msg = "_I need your help_"
-var positive_negative = "_Insert the value of the positivity or negativity_"
+module.exports.help_msg = "_I need your help_"
+module.exports.positive_negative = "_Insert the value of the positivity or negativity_"
 
-var blood_group= {
+module.exports.blood_group= {
                   "AB":"Blood group AB individuals have both A and B antigens on the surface of their RBCs, and their blood"+
                      "plasma does not contain any antibodies against either A or B antigen."+
                      "\nTherefore, an individual with type AB blood can receive blood from any group (with AB being preferable),"+
@@ -23,8 +23,3 @@ var blood_group= {
                     "group O RhD negative red cells should be restricted to persons with O negative blood, women who might be pregnant, and emergency cases in "+
                     "which blood-group testing is genuinely impracticable."
                   }
-
-exports.start_msg = start_msg
-exports.help_msg = help_msg
-exports.positive_negative = positive_negative
-exports.blood_group = blood_group
