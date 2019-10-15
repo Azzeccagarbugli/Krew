@@ -48,10 +48,10 @@ bot.action(/(\+|\-)/, (ctx, next) => {
   })
 
   function format_list (text, list) {
-    let appoggino = text; // Crea stringa di base, partendo da text
-    appoggino += list.join(","); // Combina tutti gli elementi della lista separati da virgola
-    appoggino += "\n"; // Aggiungi a capo finale
-    return appoggino
+    let tmp = text; // Crea stringa di base, partendo da text
+    tmp += list.join(","); // Combina tutti gli elementi della lista separati da virgola
+    tmp += "\n"; // Aggiungi a capo finale
+    return tmp
   }
 
   ctx.replyWithMarkdown("*Information "+user_var.blood_type[ctx.chat.id]+user_var.rh_value[ctx.chat.id]+"\n\n"+
